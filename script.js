@@ -17,6 +17,8 @@ scissorsButton.addEventListener('click', () => playRound('scissors'));
  Randomly generating the computer's choice.
  Comparing the player's choice with the computer's to determine the outcome
  updating the resultDisplay element to show whether the player won,lost, or drew the round*/
+/* Incrementing the playerScore or computerScore based on the round's outcome*/
+/* Updating the score display elements with the current scores after each round*/
 function playRound(playerChoice){
   const choices = ['rock', 'paper', 'scissors'];
   const computerChoice = choices[Math.floor(Math.random() * choices.length)];
@@ -31,8 +33,21 @@ function playRound(playerChoice){
       (playerChoice === 'scissors' && computerChoice === 'paper')
   ) {
       resultDisplay.textContent = 'You win!';
+      playerScore++; //Increase player's score by 1
   } else {
       resultDisplay.textContent = 'Computer wins!';
+      computerScore++; // Increase computer's score by 1
   }
+
+    // update the score display
+    playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
+    computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
 }
+
+/* Innitializing playerScore and computerScore variables to track the scores.
+ Selecting the HTMl elements where the player's and computer's score will be displayed*/
+let playerScore = 0;
+let computerScore = 0;
+const playerScoreDisplay = document.getElementById('player-score');
+const computerScoreDisplay = document.getElementById('computer-score');
 

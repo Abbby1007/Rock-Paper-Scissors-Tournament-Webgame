@@ -55,3 +55,14 @@ body {
   font-size: 24px;
   font-weight: bold;
 }
+/* Adding a margin above the scorebaord for spacing*/
+/* Setting a font size for readability */
+/* Adding margin around each score for clear seperation*/
+#scoreboard{
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+#player-score, #computer-score{
+  margin: 10px;
+}
