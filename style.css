@@ -1,0 +1,57 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+/* setting  a universal font for a clean and consistent look*/
+/* Using Flexbox to center the game interface vertically and horizontally on the page*/
+/*  Applying a full viewpoint height for the body to achieve a full screen effect*/
+/* Adding a gradient background for a modern look */
+body {
+  font-family : 'Arial', san-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient (to right, #56aB2F, #A8E603);
+  color: #333;
+}
+
+/* Defining the style for the main game container with padding, border-radius, and a box-shadow for a polished appearance*/
+#rps-game{
+  width: 80%,
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px ;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center; /* Center the game content */
+}
+
+/* Styling the choice buttons with padding borer-radius, and a solid background color to make them stand out and be clickable*/
+#choices button{
+  padding: 15 px 25 px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 10px;
+  transition: background-color 0.3s;
+}
+
+/* Applying a hover effect to the buttons for better user interaction*/
+#choices button:hover {
+  background-color: #0056b3
+}
+
+/* Adding a margin to seperate the result display from the choice buttons*/
+/* Increasing the font size and applying bold styling to make the result easily readable */
+#result {
+  margin-top :20px;
+  font-size: 24px;
+  font-weight: bold;
+}
