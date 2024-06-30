@@ -77,17 +77,62 @@ const roundDisplay = document.getElementById('round');
 /* Compating the final scores to determine the winner */
 /* Updating the resultDisplay with the final result message*/
 
-function concludeGame(){
-    let finalResult = '';
+/* Creating a new div element to display the game's conclusion*/
 
+function concludeGame(){
+   //Reference to the main game container
+    const gameContainer = document.getElementById('rps-game');
+
+    // Hide the choices to clear the game area
+
+    const choices = document.getElementById('choices');
+    const gameInfo = document.getElementById('game-info');
+    const roundRes = document.getElementById('result');
+    if (choices){
+        choices.style.display = 'none';
+    } 
+    if (gameInfo) {
+        gameInfo.style.display = 'none';
+    }
+    if (roundRes){
+        roundRes.style.display = 'none';
+    }
+// Create the game conclusion element
+    const gameConclusion = document.createElment('div');
+    gameConclusion.setAttribute('id', 'game-conclusion');
+
+    let finalMessage = '';
     if (playerScore > computerScore){
-        finalResult = 'Congratulations, you won the game!';
+        finalMessage = 'Congratualation you, won the game!';
     } else if (playerScore < computerScore){
-        finalResult = 'Game over, the computer wins!';
+        finalMessage = 'Game over, the computer wins!';
     } else {
-        finalResult = 'The game ends in a draw!'
+        finalMessage = 'The game ends in a draw!';
     }
 
-    resultDisplay.textContent = finalResult;
+    gameConclusion.innerHTML = `
+    <h2> Game Over </h2>
+    <p> ${finalMessage} </p>
+    <p> Final Score - You: ${playerScore} | Computer: ${computerScore}</p>
+    <button id="restart-btn"> Restart Game </button>`;
+
+    // Append the conclusion to the main game container
+    gameContainer.appendChuld(gameConclusion);
+
+    // Add event listener to restart the button
+
+    document.getElementById('restart-btn').addEventListener('click', restartGame);
+    
+    // let finalResult = '';
+
+    // if (playerScore > computerScore){
+    //     finalResult = 'Congratulations, you won the game!';
+    // } else if (playerScore < computerScore){
+    //     finalResult = 'Game over, the computer wins!';
+    // } else {
+    //     finalResult = 'The game ends in a draw!'
+    // }
+
+    // resultDisplay.textContent = finalResult;
 
 }
