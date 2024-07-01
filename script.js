@@ -6,7 +6,7 @@ const scissorsButton = document.getElementById('scissors');
 /* Selecting the element where the game's result will be displayed*/
 const resultDisplay = document.getElementById('result');
 
-/* Attaching Even listeners to each choice button */
+/* Attaching Event listeners to each choice button */
 /* Calling the playRound function with the player's choice as an argument when a button is clicked*/
 rockButton.addEventListener('click', () => playRound('rock'));
 paperButton.addEventListener('click', () => playRound('paper'));
@@ -43,7 +43,7 @@ function playRound(playerChoice){
         // (Determining the winner of the round and updating scores)
     roundDisplay.textContent = `Round: ${currentRound} of ${totalRounds}`;
         currentRound++;
-        console.log(currentRound)
+        console.log(` Current Round: ${currentRound}`);
     
         const choices = ['rock', 'paper', 'scissors'];
       const computerChoice = choices[Math.floor(Math.random() * choices.length)];
@@ -59,6 +59,7 @@ function playRound(playerChoice){
       ) {
           resultDisplay.textContent = 'You win!';
           playerScore++; //Increase player's score by 1
+          console.log(`Player's Score ${playerScore}`);
       } else {
           resultDisplay.textContent = 'Computer wins!';
           computerScore++; // Increase computer's score by 1
