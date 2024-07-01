@@ -12,6 +12,19 @@ rockButton.addEventListener('click', () => playRound('rock'));
 paperButton.addEventListener('click', () => playRound('paper'));
 scissorsButton.addEventListener('click', () => playRound('scissors'));
 
+/* Innitializing playerScore and computerScore variables to track the scores.
+ Selecting the HTMl elements where the player's and computer's score will be displayed*/
+let playerScore = 0;
+let computerScore = 0;
+const playerScoreDisplay = document.getElementById('player-score');
+const computerScoreDisplay = document.getElementById('computer-score');
+
+/* Initializing "currentRound" to track the current round number */
+/* Setting "totalRound" to determine how many rounds will be played in total */
+/* Selecting the HTML element where the current round will be displayed*/
+let currentRound = 1;
+const totalRounds = 5;
+const roundDisplay = document.getElementById('round');
 
 /* In this Function:
  Randomly generating the computer's choice.
@@ -30,54 +43,44 @@ function playRound(playerChoice){
         // (Determining the winner of the round and updating scores)
     roundDisplay.textContent = `Round: ${currentRound} of ${totalRounds}`;
         currentRound++;
+        console.log(currentRound);
     }
+        const choices = ['rock', 'paper', 'scissors'];
+      const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+      // Determines the winner and update the resultDisplay with the outcome
+
+      if(playerChoice === computerChoice) {
+        resultDisplay.textContent = 'It\'s a draw!';
+      } else if (
+          (playerChoice === 'rock' && computerChoice === 'scissors')  || 
+          (playerChoice === 'paper' && computerChoice === 'rock') || 
+          (playerChoice === 'scissors' && computerChoice === 'paper')
+      ) {
+          resultDisplay.textContent = 'You win!';
+          playerScore++; //Increase player's score by 1
+      } else {
+          resultDisplay.textContent = 'Computer wins!';
+          computerScore++; // Increase computer's score by 1
+      }
+
+        // update the score display
+        playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
+        computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
+    }
+    
     if (currentRound > totalRounds){
         concludeGame(); // call this function when all rounds are completed
     }
    
-  const choices = ['rock', 'paper', 'scissors'];
-  const computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
-  // Determines the winner and update the resultDisplay with the outcome
-
-  if(playerChoice === computerChoice) {
-    resultDisplay.textContent = 'It\'s a draw!';
-  } else if (
-      (playerChoice === 'rock' && computerChoice === 'scissors')  || 
-      (playerChoice === 'paper' && computerChoice === 'rock') || 
-      (playerChoice === 'scissors' && computerChoice === 'paper')
-  ) {
-      resultDisplay.textContent = 'You win!';
-      playerScore++; //Increase player's score by 1
-  } else {
-      resultDisplay.textContent = 'Computer wins!';
-      computerScore++; // Increase computer's score by 1
-  }
-
-    // update the score display
-    playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
-    computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
-}
-
-
-/* Innitializing playerScore and computerScore variables to track the scores.
- Selecting the HTMl elements where the player's and computer's score will be displayed*/
-let playerScore = 0;
-let computerScore = 0;
-const playerScoreDisplay = document.getElementById('player-score');
-const computerScoreDisplay = document.getElementById('computer-score');
-
-/* Initializing "currentRound" to track the current round number */
-/* Setting "totalRound" to determine how many rounds will be played in total */
-/* Selecting the HTML element where the current round will be displayed*/
-let currentRound = 1;
-const totalRounds = 5;
-const roundDisplay = document.getElementById('round');
 
 /* Compating the final scores to determine the winner */
 /* Updating the resultDisplay with the final result message*/
 
-/* Creating a new div element to display the game's conclusion*/
+/* Creating a new div element to display the game's conclusion, including a final message and the final scores*/
+/* Hiding the round results, choice buttons, and game info elements for a cleaner look*/
+/* Providing a "Restart Game" button within this div that allows the player to start a new game*/
 
 function concludeGame(){
    //Reference to the main game container
@@ -117,22 +120,52 @@ function concludeGame(){
     <button id="restart-btn"> Restart Game </button>`;
 
     // Append the conclusion to the main game container
-    gameContainer.appendChuld(gameConclusion);
+    gameContainer.appendChild(gameConclusion);
 
     // Add event listener to restart the button
 
     document.getElementById('restart-btn').addEventListener('click', restartGame);
-    
-    // let finalResult = '';
+   }
 
-    // if (playerScore > computerScore){
-    //     finalResult = 'Congratulations, you won the game!';
-    // } else if (playerScore < computerScore){
-    //     finalResult = 'Game over, the computer wins!';
-    // } else {
-    //     finalResult = 'The game ends in a draw!'
-    // }
+// resetting the Scores and current round to their initial values
+// Updating the UI to reflect the reset state.
+// Resetting the display style for the elements we hid in the "concludeGame" function
+// Removing the game conclusion display from the previous game
+// Making sure the choice buttons and initial game instructions are visible again
+function restartGame() {
+    playerScore = 0;
+    computerScore = 0;
+    currentRound = 1;
 
-    // resultDisplay.textContent = finalResult;
+    // Reset score and round displays
 
+    playerScoreDisplay.textContent = 'Player Score: 0';
+    computerScoreDisplay.textContent = 'Computer Score: 0';
+    roundDisplay.textContent = `Round: 1 of ${totalRounds}`;
+
+    const choices = document.getElementById('choices');
+    const gameInfo = document.getElementById('game-info');
+    const roundRes = document.getElementById('result');
+
+        if(choices){
+            choices.style.display = '';
+        }
+
+        if (gameInfo){
+            gameInfo.style.display = '';
+        }
+
+        if(roundRes){
+            roundRes.style.display = '';
+        }
+
+    // Remove the game conclusion display
+    const gameConclusion = document.getElementById('game-conclusion');
+    if(gameConclusion){
+        gameConclusion.remove();
+    }
+
+    // Ensure the game components are visible again if they were hidden
+    document.getElementById('choices').style.display = '';
+    resultDisplay.textContent = 'Choose your weapon!';
 }
