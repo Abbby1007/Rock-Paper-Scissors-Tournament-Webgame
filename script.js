@@ -43,8 +43,8 @@ function playRound(playerChoice){
         // (Determining the winner of the round and updating scores)
     roundDisplay.textContent = `Round: ${currentRound} of ${totalRounds}`;
         currentRound++;
-        console.log(currentRound);
-    }
+        console.log(currentRound)
+    
         const choices = ['rock', 'paper', 'scissors'];
       const computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
@@ -72,6 +72,7 @@ function playRound(playerChoice){
     if (currentRound > totalRounds){
         concludeGame(); // call this function when all rounds are completed
     }
+}
    
 
 
@@ -101,7 +102,7 @@ function concludeGame(){
         roundRes.style.display = 'none';
     }
 // Create the game conclusion element
-    const gameConclusion = document.createElment('div');
+    const gameConclusion = document.createElement('div');
     gameConclusion.setAttribute('id', 'game-conclusion');
 
     let finalMessage = '';
@@ -146,26 +147,24 @@ function restartGame() {
     const choices = document.getElementById('choices');
     const gameInfo = document.getElementById('game-info');
     const roundRes = document.getElementById('result');
+    if (choices) {
+        choices.style.display = '';
+    }
 
-        if(choices){
-            choices.style.display = '';
-        }
+    if (gameInfo) {
+        gameInfo.style.display = '';
+    }
 
-        if (gameInfo){
-            gameInfo.style.display = '';
-        }
-
-        if(roundRes){
-            roundRes.style.display = '';
-        }
-
+    if (roundRes) {
+        roundRes.style.display = '';
+    }
     // Remove the game conclusion display
     const gameConclusion = document.getElementById('game-conclusion');
-    if(gameConclusion){
+    if (gameConclusion) {
         gameConclusion.remove();
     }
 
     // Ensure the game components are visible again if they were hidden
-    document.getElementById('choices').style.display = '';
+document.getElementById('choices').style.display = '';
     resultDisplay.textContent = 'Choose your weapon!';
 }
