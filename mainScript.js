@@ -26,7 +26,7 @@ const roundDisplay = document.getElementById('round');
 const playerChoiceDisplay = document.getElementById('player-choice');
 const computerChoiceDisplay = document.getElementById('computer-choice');
 const roundsWonDisplay = document.getElementById('rounds-won');
-const finalMessageDisplay = document.getElementById('moveonButton')
+const finalMessageDisplay = document.getElementById('final-message')
 
 // determines what counts as a point to the player
 // then after each round the round counter goes up, and the COmputer and player's choice is displayed and the amount of player victories is also displayed
@@ -42,59 +42,51 @@ function playRound(playerChoice){
     if(playerChoice === computerChoice) {
             computerChoiceDisplay.textContent = `Computer's Choice:${computerChoice}`;
               playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
-    }
+              }
           
- else if (
+     else if (
         (playerChoice === 'ROCK' && computerChoice === 'SCISSORS')  || 
              (playerChoice === 'PAPER' && computerChoice === 'ROCK') || 
              (playerChoice === 'SCISSORS' && computerChoice === 'PAPER')
-    ){
+          ){
         computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
         playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
-      roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
-        roundWon++; //Increase player's round won total
-        
-    } else {
+        roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
+          roundWon++; //Increase player's round won total
+     } 
+        else {
           computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
-      playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
-      roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
-    console.log(`Player's Rounds Won ${roundWon} `)
+          playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
+          roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
+          finalMessage = `Congratulations, you won ${roundWon} out of ${totalRound} so you can move one`;
+          finalMessageDisplay.textContent = `${finalmessage} `;
+          console.log(`Player's Rounds Won ${roundWon} `)
  }
-           }
-  
+       
+    if(roundWon >= 1){
+      finalMessage = `Congratulations, you won atleast 1 out of ${totalRound} so you can move one`;
+      finalMessageDisplay.textContent = `${finalMessage} `;
+     concludeGame();
 
-  if(roundWon > 1){
-    finalMessage = `Congratulations, you won ${roundWon} out of ${totalRound} so you can move one`
-    finalMessageDisplay.textContent = `${finalmessage} `;
+      } else {
+      finalMessage = `You must win 1 out of 5 rounds to move on to level 2 `
+      finalMessageDisplay.textContent = `${finalMessage} `;
+  }
+  
     
-    } else {
-    finalMessage = `Testttt`
-    finalMessageDisplay.textContent = `${finalmessage} `;
+  
     
   } 
   
   // if rounds won is greater than 1 then activate message and moveButton()
   // else if activate message and restartButton
     } 
-
-concludeGame();
-
 function concludeGame(){
-  const gameConclusion = document.getElementById('conclusion-section');
+  const gameConclusion = document.createElement('div');
+  gameConclusion.setAttribute('id', 'game-conclusion');
+
   gameConclusion.innerHTML = `
-  <h1> Conclusion: </h1>
-  <p> You won ${roundWon}s out of ${totalRound}
-  `;
-  
-  
-}
-
-function moveonButton(){
-  
-}
-
-function restartButton(){
-  
+  <a href = " index.html"> <button id="restart-btn"> Restart Game </button> </a> `;
 }
     
     
