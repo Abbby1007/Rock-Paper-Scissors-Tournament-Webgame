@@ -23,7 +23,7 @@ let roundWon = 0;
 let currentRound = 1;
 const totalRound = 3; // total rounds can change with each level
 const roundDisplay = document.getElementById('round');
-const playerChoiceDisplay = document.getElementById('player-score');
+const playerChoiceDisplay = document.getElementById('player-choice');
 const computerChoiceDisplay = document.getElementById('computer-choice');
 
 
@@ -33,7 +33,7 @@ function playRound(playerChoice){
     currentRound++;
     console.log(`current round: ${currentRound}`);
     
-    const choices = ['rock', 'paper', 'scissors'];
+    const choices = ['ROCK', 'PAPER', 'SCISSORS'];
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];
       
     if(playerChoice === computerChoice) {
@@ -42,9 +42,9 @@ function playRound(playerChoice){
     }
           
  else if (
-        (playerChoice === 'rock' && computerChoice === 'scissors')  || 
-             (playerChoice === 'paper' && computerChoice === 'rock') || 
-             (playerChoice === 'scissors' && computerChoice === 'paper')
+        (playerChoice === 'ROCK' && computerChoice === 'SCISSORS')  || 
+             (playerChoice === 'PAPER' && computerChoice === 'ROCK') || 
+             (playerChoice === 'SCISSORS' && computerChoice === 'PAPER')
     ){
         computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
         playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
