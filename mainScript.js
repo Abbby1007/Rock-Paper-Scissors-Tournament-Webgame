@@ -21,12 +21,14 @@ let roundWon = 0;
 /* Selecting the HTML element where the current round will be displayed*/
 
 let currentRound = 1;
-const totalRound = 3; // total rounds can change with each level
+const totalRound = 5; // total rounds can change with each level
 const roundDisplay = document.getElementById('round');
 const playerChoiceDisplay = document.getElementById('player-choice');
 const computerChoiceDisplay = document.getElementById('computer-choice');
+const roundsWonDisplay = document.getElementById('rounds-won');
 
-
+// determines what counts as a point to the player
+// then after each round the round counter goes up, and the COmputer and player's choice is displayed and the amount of player victories is also displayed
 function playRound(playerChoice){
   if(currentRound <= totalRound){
     roundDisplay.textContent = `Round: ${currentRound} of ${totalRound}`;
@@ -37,8 +39,8 @@ function playRound(playerChoice){
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];
       
     if(playerChoice === computerChoice) {
-            computerChoiceDisplay.textContent = `Computer's Choice:                             ${computerChoice}`;
-              playerChoiceDisplay.textContent = `Player's choice:                             ${playerChoice}`;
+            computerChoiceDisplay.textContent = `Computer's Choice:${computerChoice}`;
+              playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
     }
           
  else if (
@@ -48,17 +50,33 @@ function playRound(playerChoice){
     ){
         computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
         playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
+      roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
         roundWon++; //Increase player's round won total
         
     } else {
-          computerChoiceDisplay.textContent = `Computer's Choice:                             ${computerChoice}`;
+          computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
       playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
-    }
-
-       
-           }
-    } 
+      roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
     console.log(`Player's Rounds Won ${roundWon} `)
+ }
+           }
+
+   // if rounds won is greater than 1 then activate message and moveButton()
+  // else if activate message and restartButton
+    } 
+
+function concludeGame(){
+  
+}
+
+function moveonButton(){
+  
+}
+
+function restartButton(){
+  
+}
+    
     
   
   
