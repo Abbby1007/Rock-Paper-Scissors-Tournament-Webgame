@@ -53,20 +53,21 @@ function playRound(playerChoice){
         playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
         roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
           roundWon++; //Increase player's round won total
+       roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
      } 
         else {
           computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
           playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
           roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
           finalMessage = `Congratulations, you won ${roundWon} out of ${totalRound} so you can move one`;
-          finalMessageDisplay.textContent = `${finalmessage} `;
+          finalMessageDisplay.textContent = `${finalMessage} `;
           console.log(`Player's Rounds Won ${roundWon} `)
  }
        
     if(roundWon >= 1){
-      finalMessage = `Congratulations, you won atleast 1 out of ${totalRound} so you can move one`;
+      finalMessage = `Congratulations, you won at ${roundWon} out of ${totalRound} so you can move one`;
       finalMessageDisplay.textContent = `${finalMessage} `;
-     concludeGame();
+      buttonfunction();
 
       } else {
       finalMessage = `You must win 1 out of 5 rounds to move on to level 2 `
@@ -81,16 +82,10 @@ function playRound(playerChoice){
   // if rounds won is greater than 1 then activate message and moveButton()
   // else if activate message and restartButton
     } 
-function concludeGame(){
-  const gameConclusion = document.createElement('div');
-  gameConclusion.setAttribute('id', 'game-conclusion');
-
-  gameConclusion.innerHTML = `
-  <a href = " index.html"> <button id="restart-btn"> Restart Game </button> </a> `;
-}
     
-    
-  
+function buttonfunction(){
+  document.getElementById("button-appear").innerHTML = '<a href = "secondlevel.html"> <button> Move on </button> </a>'
+}  
   
 
   
