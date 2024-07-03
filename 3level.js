@@ -21,7 +21,7 @@ let finalMessage = '';
 /* Selecting the HTML element where the current round will be displayed*/
 
 let currentRound = 1;
-const totalRound = 7; // total rounds can change with each level
+const totalRound = 3; // total rounds can change with each level
 const roundDisplay = document.getElementById('round');
 const playerChoiceDisplay = document.getElementById('player-choice');
 const computerChoiceDisplay = document.getElementById('computer-choice');
@@ -33,17 +33,17 @@ const finalMessageDisplay = document.getElementById('final-message')
 function playRound(playerChoice){
   if(currentRound <= totalRound){
     roundDisplay.textContent = `Round: ${currentRound} of ${totalRound}`;
-    
+
     console.log(`current round: ${currentRound}`);
-    
+
     const choices = ['ROCK', 'PAPER', 'SCISSORS'];
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];
-      
+
     if(playerChoice === computerChoice) {
             computerChoiceDisplay.textContent = `Computer's Choice:${computerChoice}`;
               playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
               }
-          
+
      else if (
         (playerChoice === 'ROCK' && computerChoice === 'SCISSORS')  || 
              (playerChoice === 'PAPER' && computerChoice === 'ROCK') || 
@@ -65,7 +65,7 @@ function playRound(playerChoice){
           // finalMessageDisplay.textContent = `${finalMessage} `;
           console.log(`Player's Rounds Won ${roundWon} `)
  }
-       
+
     if(roundWon >= 1){
       finalMessage = `Congratulations, you won at ${roundWon} out of ${totalRound} so you can move one`;
       finalMessageDisplay.textContent = `${finalMessage} `;
@@ -75,25 +75,19 @@ function playRound(playerChoice){
       finalMessage = `Try Again `;
       // RestartFunction();
   }
-  
-    
-  
-    
+
   } 
-  
+
   // if rounds won is greater than 1 then activate message and moveButton()
   // else if activate message and restartButton
     } 
-    
+
 function buttonfunction(){
-  document.getElementById("button-appear").innerHTML = '<a href = "secondlevel.html"> <button> Move on </button> </a>'
+  document.getElementById("button-appear").innerHTML = '<a href = "fourthlevel.html"> <button> Move on </button> </a>'
 }  
 
 function restartGame(){
   currentRound = 1;
   roundWon = 0;
-  
-}
-  
 
-  
+}
