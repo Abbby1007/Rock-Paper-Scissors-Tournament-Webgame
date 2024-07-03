@@ -33,7 +33,7 @@ const finalMessageDisplay = document.getElementById('final-message')
 function playRound(playerChoice){
   if(currentRound <= totalRound){
     roundDisplay.textContent = `Round: ${currentRound} of ${totalRound}`;
-    currentRound++;
+    
     console.log(`current round: ${currentRound}`);
     
     const choices = ['ROCK', 'PAPER', 'SCISSORS'];
@@ -54,13 +54,15 @@ function playRound(playerChoice){
         roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
           roundWon++; //Increase player's round won total
        roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
+       currentRound++;
      } 
         else {
           computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
           playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
           roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
-          finalMessage = `Congratulations, you won ${roundWon} out of ${totalRound} so you can move one`;
-          finalMessageDisplay.textContent = `${finalMessage} `;
+          currentRound++;
+          // finalMessage = `Congratulations, you won ${roundWon} out of ${totalRound} so you can move one`;
+          // finalMessageDisplay.textContent = `${finalMessage} `;
           console.log(`Player's Rounds Won ${roundWon} `)
  }
        
@@ -69,9 +71,9 @@ function playRound(playerChoice){
       finalMessageDisplay.textContent = `${finalMessage} `;
       buttonfunction();
 
-      } else {
-      finalMessage = `You must win 1 out of 5 rounds to move on to level 2 `
-      finalMessageDisplay.textContent = `${finalMessage} `;
+      } else if ((currentRound === totalRound) && roundWon < 1) {
+      finalMessage = `Try Again `
+      // RestartFunction();
   }
   
     
