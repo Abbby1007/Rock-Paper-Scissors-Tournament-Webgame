@@ -33,30 +33,17 @@ const finalMessageDisplay = document.getElementById('final-message')
 function playRound(playerChoice){
   if(currentRound <= totalRound){
     roundDisplay.textContent = `Round: ${currentRound} of ${totalRound}`;
-    
+  currentRound++;
     console.log(`current round: ${currentRound}`);
-    
-    if(roundWon >= 1){
-        finalMessage = `Congratulations, you won at ${roundWon} out of ${totalRound} so you can move one`;
-        finalMessageDisplay.textContent = `${finalMessage} `;
-        buttonfunction();
 
-        } else if ((currentRound === totalRound) && (roundWon < 1)){
-        finalMessage = `Try Again `;
-         finalMessageDisplay.textContent = `${finalMessage} `;
-
-        // RestartFunction();
-    }
-
-    
     const choices = ['ROCK', 'PAPER', 'SCISSORS'];
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];
-      
+
     if(playerChoice === computerChoice) {
             computerChoiceDisplay.textContent = `Computer's Choice:${computerChoice}`;
               playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
               }
-          
+
      else if (
         (playerChoice === 'ROCK' && computerChoice === 'SCISSORS')  || 
              (playerChoice === 'PAPER' && computerChoice === 'ROCK') || 
@@ -67,41 +54,40 @@ function playRound(playerChoice){
         roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
           roundWon++; //Increase player's round won total
        roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
-       currentRound++;
+     
      } 
         else {
           computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
           playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
           roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
-          currentRound++;
+         
           // finalMessage = `Congratulations, you won ${roundWon} out of ${totalRound} so you can move one`;
           // finalMessageDisplay.textContent = `${finalMessage} `;
           console.log(`Player's Rounds Won ${roundWon} `)
  }
-       
-    
-    
-    
-     // document.getElementById('restart-btn').addEventListener('click', restartGame);
-  
-    
+
+    if(roundWon >= 1){
+      finalMessage = `Congratulations, you won at ${roundWon} out of ${totalRound} so you can move one`;
+      finalMessageDisplay.textContent = `${finalMessage} `;
+      buttonfunction();
+
+      } else if ((currentRound > totalRound) && (roundWon < 1)) {
+      finalMessage = `Try Again `;
+       finalMessageDisplay.textContent = `${finalMessage} `;
+      restartGameButton();
+  }
+
   } 
-  
+
   // if rounds won is greater than 1 then activate message and moveButton()
   // else if activate message and restartButton
     } 
-    
+
 function buttonfunction(){
-  document.getElementById("button-appear").innerHTML = '<a href = "secondlevel.html"> <button> Move on </button> </a>'
+  document.getElementById("button-appear").innerHTML = '<a href = "second.html"> <button> Move on </button> </a>'
 }  
 
-function restartGame(){
-  document.getElementById("restart").innerHTML = ' <button> restart </button> '
-  currentRound = 1;
-  roundWon = 0;
-   roundDisplay.textContent = `Round: ${currentRound} of ${totalRound}`;
-  
-}
-  
+function restartGameButton(){
+   document.getElementById("button-appear").innerHTML = '<a href = "startpage.html"> <button> Back to the Beginning </button> </a>'
 
-  
+}
