@@ -14,6 +14,7 @@ scissorsButton.addEventListener('click', () => playRound('SCISSORS'));
  Selecting the HTMl elements where the player's and computer's score will be displayed*/
 let PlayerRoundWon = 0;
 let ComputerRoundWon = 0;
+let roundDraws = 0;
 let finalMessage = '';
 
 
@@ -28,7 +29,8 @@ const playerChoiceDisplay = document.getElementById('player-choice');
 const computerChoiceDisplay = document.getElementById('computer-choice');
 const playerRoundsWonDisplay = document.getElementById('player-rounds-won');
 const computerRoundsWonDisplay = document.getElementById('computer-rounds-won');
-const finalMessageDisplay = document.getElementById('final-message')
+const roundsDrawDisplay = document.getElementById(`round-draw`);
+const finalMessageDisplay = document.getElementById('final-message');
 
 // determines what counts as a point to the player
 // then after each round the round counter goes up, and the COmputer and player's choice is displayed and the amount of player victories is also displayed
@@ -51,11 +53,24 @@ function playRound(playerChoice) {
       (playerChoice === 'PAPER' && computerChoice === 'ROCK') ||
       (playerChoice === 'SCISSORS' && computerChoice === 'PAPER')
     ) {
-       PlayerRoundWon++;
+      PlayerRoundWon++;
       computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
       playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
       playerRoundsWonDisplay.textContent = `Rounds Won: ${PlayerRoundWon}`;
       computerRoundsWonDisplay.textContent = `Opponents Rounds Won: ${ComputerRoundWon}`;
+      roundsDrawDisplay.textContent = `Round Ties: ${roundDraws}`;
+
+    } else if ((playerChoice === 'ROCK' && computerChoice === 'ROCK') ||
+      (playerChoice === 'PAPER' && computerChoice === 'PAPER') ||
+      (playerChoice === 'SCISSORS' && computerChoice === 'SCISSORS')
+    ) {
+      roundDraws++;
+      console.log(`tiessssssss: roundDraws`);
+      computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
+      playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
+      playerRoundsWonDisplay.textContent = `Rounds Won: ${PlayerRoundWon}`;
+      computerRoundsWonDisplay.textContent = `Rounds Opponent Won: ${ComputerRoundWon}`;
+      roundsDrawDisplay.textContent = `Round Ties: ${roundDraws}`;
 
     }
     else {
@@ -64,34 +79,35 @@ function playRound(playerChoice) {
       playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
       playerRoundsWonDisplay.textContent = `Rounds Won: ${PlayerRoundWon}`;
       computerRoundsWonDisplay.textContent = `Rounds Opponent Won: ${ComputerRoundWon}`;
+      roundsDrawDisplay.textContent = `Round Ties: ${roundDraws}`;
     }
 
-    if ( (currentRound > totalRound) && (PlayerRoundWon > ComputerRoundWon) ) {
-      finalMessage = `Congratulations, you won at ${PlayerRoundWon} out of ${totalRound} so you can move one`;
+    if ((currentRound > totalRound) && (PlayerRoundWon > ComputerRoundWon)) {
+      finalMessage = `Congratulations, you won  ${PlayerRoundWon} out of ${totalRound} so you can move one`;
       finalMessageDisplay.textContent = `${finalMessage} `;
       buttonfunction();
 
-    }  else if ((currentRound > totalRound) && (ComputerRoundWon === PlayerRoundWon)) {
+    } else if ((currentRound > totalRound) && (ComputerRoundWon === PlayerRoundWon)) {
       finalMessage = `Draw!!`
       finalMessageDisplay.textContent = `${finalMessage} `;
       restartGameButton();
     } else if ((currentRound > totalRound) && (ComputerRoundWon > PlayerRoundWon)) {
-    finalMessage = `Try Again `;
-    finalMessageDisplay.textContent = `${finalMessage} `;
-    restartGameButton();
+      finalMessage = `Try Again `;
+      finalMessageDisplay.textContent = `${finalMessage} `;
+      restartGameButton();
 
+    }
+
+    // if rounds won is greater than 1 then activate message and moveButton()
+    // else if activate message and restartButton
   }
 
-  // if rounds won is greater than 1 then activate message and moveButton()
-  // else if activate message and restartButton
-}
+  function buttonfunction() {
+    document.getElementById("button-appear").innerHTML = '<a href = "secondlevel.html"> <button> Move on </button> </a>'
+  }
 
-function buttonfunction() {
-  document.getElementById("button-appear").innerHTML = '<a href = "second.html"> <button> Move on </button> </a>'
-}
+  function restartGameButton() {
+    document.getElementById("button-appear").innerHTML = '<a href = "startpage.html"> <button> Back to the Beginning </button> </a>'
 
-function restartGameButton() {
-  document.getElementById("button-appear").innerHTML = '<a href = "startpage.html"> <button> Back to the Beginning </button> </a>'
-
-}
+  }
 }
