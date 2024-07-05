@@ -1,59 +1,63 @@
-#rps-game{
+#rps-game {
   width: 80%,
-  max-width: 600px;
+    max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
-  border-radius: 10px ;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  text-align: center; /* Center the game content */
-   font-size: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  /* Center the game content */
+  font-size: 25px;
 }
 
-#game-info{
+#game-info {
   width: 80%,
-  max-width: 600px;
+    max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
-  border-radius: 10px ;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  text-align: center; /* Center the game content */
-   font-size: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  /* Center the game content */
+  font-size: 25px;
 }
 
-#results{
+#results {
   width: 80%,
-  max-width: 600px;
+    max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
-  border-radius: 10px ;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  text-align: center; /* Center the game content */
-   font-size: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  /* Center the game content */
+  font-size: 25px;
 }
 
 body {
   width: 80%,
-  max-width: 600px;
+    max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
-  border-radius: 10px ;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  text-align: center; /* Center the game content */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  /* Center the game content */
   font-size: 25px;
 }
 
-#gameover{
+#gameover {
   color: red;
   font-size: 35px;
 }
 
 button {
   padding: 15 px 25 px;
-  background-color: #4CAF50;
+  background-color: #5783db;
   color: black;
   border: none;
   border-radius: 5px;

@@ -12,7 +12,8 @@ scissorsButton.addEventListener('click', () => playRound('SCISSORS'));
 
 /* Innitializing playerScore and computerScore variables to track the scores.
  Selecting the HTMl elements where the player's and computer's score will be displayed*/
-let roundWon = 0;
+let PlayerRoundWon = 0;
+let ComputerRoundWon = 0;
 let finalMessage = '';
 
 
@@ -21,11 +22,12 @@ let finalMessage = '';
 /* Selecting the HTML element where the current round will be displayed*/
 
 let currentRound = 1;
-const totalRound = 2; // total rounds can change with each level
+const totalRound = 3; // total rounds can change with each level
 const roundDisplay = document.getElementById('round');
 const playerChoiceDisplay = document.getElementById('player-choice');
 const computerChoiceDisplay = document.getElementById('computer-choice');
-const roundsWonDisplay = document.getElementById('rounds-won');
+const playerRoundsWonDisplay = document.getElementById('player-rounds-won');
+const computerRoundsWonDisplay = document.getElementById('computer-rounds-won');
 const finalMessageDisplay = document.getElementById('final-message')
 
 // determines what counts as a point to the player
@@ -49,33 +51,34 @@ function playRound(playerChoice) {
       (playerChoice === 'PAPER' && computerChoice === 'ROCK') ||
       (playerChoice === 'SCISSORS' && computerChoice === 'PAPER')
     ) {
+       PlayerRoundWon++;
       computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
       playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
-      roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
-      roundWon++; //Increase player's round won total
-      roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
+      playerRoundsWonDisplay.textContent = `Rounds Won: ${PlayerRoundWon}`;
+      computerRoundsWonDisplay.textContent = `Opponents Rounds Won: ${ComputerRoundWon}`;
 
     }
     else {
+      ComputerRoundWon++;
       computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
       playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
-      roundsWonDisplay.textContent = `Rounds Won: ${roundWon}`;
-
-      // finalMessage = `Congratulations, you won ${roundWon} out of ${totalRound} so you can move one`;
-      // finalMessageDisplay.textContent = `${finalMessage} `;
-      console.log(`Player's Rounds Won ${roundWon} `)
+      playerRoundsWonDisplay.textContent = `Rounds Won: ${PlayerRoundWon}`;
+      computerRoundsWonDisplay.textContent = `Rounds Opponent Won: ${ComputerRoundWon}`;
     }
 
-    if (roundWon >= 1) {
-      finalMessage = `Congratulations, you won at ${roundWon} out of ${totalRound} so you can move one`;
+    if ( (currentRound > totalRound) && (PlayerRoundWon > ComputerRoundWon) ) {
+      finalMessage = `Congratulations, you won at ${PlayerRoundWon} out of ${totalRound} so you can move one`;
       finalMessageDisplay.textContent = `${finalMessage} `;
       buttonfunction();
 
-    } else if ((currentRound > totalRound) && (roundWon < 1)) {
-      finalMessage = `Try Again `;
+    }  else if ((currentRound > totalRound) && (ComputerRoundWon === PlayerRoundWon)) {
+      finalMessage = `Draw!!`
       finalMessageDisplay.textContent = `${finalMessage} `;
       restartGameButton();
-    }
+    } else if ((currentRound > totalRound) && (ComputerRoundWon > PlayerRoundWon)) {
+    finalMessage = `Try Again `;
+    finalMessageDisplay.textContent = `${finalMessage} `;
+    restartGameButton();
 
   }
 
@@ -90,4 +93,5 @@ function buttonfunction() {
 function restartGameButton() {
   document.getElementById("button-appear").innerHTML = '<a href = "startpage.html"> <button> Back to the Beginning </button> </a>'
 
+}
 }

@@ -2,12 +2,13 @@ html {
   height: 100%;
   width: 100%;
 }
+
 /* setting  a universal font for a clean and consistent look*/
 /* Using Flexbox to center the game interface vertically and horizontally on the page*/
 /*  Applying a full viewpoint height for the body to achieve a full screen effect*/
 /* Adding a gradient background for a modern look */
 body {
-  font-family : 'Arial', san-serif;
+  font-family: 'Arial', san-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,19 +20,20 @@ body {
 }
 
 /* Defining the style for the main game container with padding, border-radius, and a box-shadow for a polished appearance*/
-#rps-game{
+#rps-game {
   width: 80%,
-  max-width: 600px;
+    max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
-  border-radius: 10px ;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  text-align: center; /* Center the game content */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  /* Center the game content */
 }
 
 /* Styling the choice buttons with padding borer-radius, and a solid background color to make them stand out and be clickable*/
-#choices button{
+#choices button {
   padding: 15 px 25 px;
   background-color: #4CAF50;
   color: white;
@@ -51,29 +53,32 @@ body {
 /* Adding a margin to seperate the result display from the choice buttons*/
 /* Increasing the font size and applying bold styling to make the result easily readable */
 #result {
-  margin-top :20px;
+  margin-top: 20px;
   font-size: 24px;
   font-weight: bold;
 }
+
 /* Adding a margin above the scorebaord for spacing*/
 /* Setting a font size for readability */
 /* Adding margin around each score for clear seperation*/
-#scoreboard{
+#scoreboard {
   margin-top: 20px;
   font-size: 20px;
 }
 
-#player-score, #computer-score{
+#player-score,
+#computer-score {
   margin: 10px;
 }
+
 /* The "game-info" container is stylded to center its contents adn provide some amrgin at the bottom. */
 /* The "round" element's font size is increased for better visiblity, and a margin is added for spacing */
-#game-info{
+#game-info {
   text-align: center;
   margin-bottom: 20px;
 }
 
-#round{
+#round {
   font-size: 20px;
   margin: 10px 0;
 }
