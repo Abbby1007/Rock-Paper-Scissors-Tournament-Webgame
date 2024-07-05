@@ -36,45 +36,45 @@ const roundDisplay = document.getElementById('round');
 /* Updating the round information display after each round. */
 /* Incrementing the "currentRound" variable to progress through the game */
 /* Calling a "concludeGame" function to handle the end of the game*/
-function playRound(playerChoice){
+function playRound(playerChoice) {
 
-    if(currentRound <= totalRounds){
+    if (currentRound <= totalRounds) {
         // Existing playRouind Logic...
         // (Determining the winner of the round and updating scores)
-    roundDisplay.textContent = `Round: ${currentRound} of ${totalRounds}`;
+        roundDisplay.textContent = `Round: ${currentRound} of ${totalRounds}`;
         currentRound++;
         console.log(` Current Round: ${currentRound}`);
-    
+
         const choices = ['rock', 'paper', 'scissors'];
-      const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+        const computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
-      // Determines the winner and update the resultDisplay with the outcome
+        // Determines the winner and update the resultDisplay with the outcome
 
-      if(playerChoice === computerChoice) {
-        resultDisplay.textContent = 'It\'s a draw!';
-      } else if (
-          (playerChoice === 'rock' && computerChoice === 'scissors')  || 
-          (playerChoice === 'paper' && computerChoice === 'rock') || 
-          (playerChoice === 'scissors' && computerChoice === 'paper')
-      ) {
-          resultDisplay.textContent = 'You win!';
-          playerScore++; //Increase player's score by 1
-          console.log(`Player's Score ${playerScore}`);
-      } else {
-          resultDisplay.textContent = 'Computer wins!';
-          computerScore++; // Increase computer's score by 1
-      }
+        if (playerChoice === computerChoice) {
+            resultDisplay.textContent = 'It\'s a draw!';
+        } else if (
+            (playerChoice === 'rock' && computerChoice === 'scissors') ||
+            (playerChoice === 'paper' && computerChoice === 'rock') ||
+            (playerChoice === 'scissors' && computerChoice === 'paper')
+        ) {
+            resultDisplay.textContent = 'You win!';
+            playerScore++; //Increase player's score by 1
+            console.log(`Player's Score ${playerScore}`);
+        } else {
+            resultDisplay.textContent = 'Computer wins!';
+            computerScore++; // Increase computer's score by 1
+        }
 
         // update the score display
         playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
         computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
     }
-    
-    if (currentRound > totalRounds){
+
+    if (currentRound > totalRounds) {
         concludeGame(); // call this function when all rounds are completed
     }
 }
-   
+
 
 
 /* Compating the final scores to determine the winner */
@@ -84,8 +84,8 @@ function playRound(playerChoice){
 /* Hiding the round results, choice buttons, and game info elements for a cleaner look*/
 /* Providing a "Restart Game" button within this div that allows the player to start a new game*/
 
-function concludeGame(){
-   //Reference to the main game container
+function concludeGame() {
+    //Reference to the main game container
     const gameContainer = document.getElementById('rps-game');
 
     // Hide the choices to clear the game area
@@ -93,23 +93,23 @@ function concludeGame(){
     const choices = document.getElementById('choices');
     const gameInfo = document.getElementById('game-info');
     const roundRes = document.getElementById('result');
-    if (choices){
+    if (choices) {
         choices.style.display = 'none';
-    } 
+    }
     if (gameInfo) {
         gameInfo.style.display = 'none';
     }
-    if (roundRes){
+    if (roundRes) {
         roundRes.style.display = 'none';
     }
-// Create the game conclusion element
+    // Create the game conclusion element
     const gameConclusion = document.createElement('div');
     gameConclusion.setAttribute('id', 'game-conclusion');
 
     let finalMessage = '';
-    if (playerScore > computerScore){
+    if (playerScore > computerScore) {
         finalMessage = 'Congratualation you, won the game!';
-    } else if (playerScore < computerScore){
+    } else if (playerScore < computerScore) {
         finalMessage = 'Game over, the computer wins!';
     } else {
         finalMessage = 'The game ends in a draw!';
@@ -127,7 +127,7 @@ function concludeGame(){
     // Add event listener to restart the button
 
     document.getElementById('restart-btn').addEventListener('click', restartGame);
-   }
+}
 
 // resetting the Scores and current round to their initial values
 // Updating the UI to reflect the reset state.
@@ -166,6 +166,6 @@ function restartGame() {
     }
 
     // Ensure the game components are visible again if they were hidden
-document.getElementById('choices').style.display = '';
+    document.getElementById('choices').style.display = '';
     resultDisplay.textContent = 'Choose your weapon!';
 }
