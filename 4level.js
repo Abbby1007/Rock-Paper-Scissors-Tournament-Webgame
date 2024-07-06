@@ -83,7 +83,7 @@ function playRound(playerChoice) {
       finalMessage = `Draw!!`
       finalMessageDisplay.textContent = `${finalMessage} `;
       restartGameButton();
-    } else if ((currentRound > totalRound) && (ComputerRoundWon > PlayerRoundWon) ) {
+    } else if ((currentRound > totalRound) && (ComputerRoundWon > PlayerRoundWon)) {
       finalMessage = `Try Again `;
       finalMessageDisplay.textContent = `${finalMessage} `;
       restartGameButton();
@@ -95,11 +95,11 @@ function playRound(playerChoice) {
   }
 
   function buttonfunction() {
-    document.getElementById("button-appear").innerHTML = '<a href = "secondlevel.html"> <button> Move on </button> </a>'
+    document.getElementById("button-appear").innerHTML = '<a href = "victoryPage.html"> <button> Claim Your Trophy </button> </a>'
   }
 
   function restartGameButton() {
-    document.getElementById("button-appear").innerHTML = '<a href = "firstlevel.html"> <button> Restart </button> </a>'
+    document.getElementById("button-appear").innerHTML = '<a href = "firstlevel.html"> <button> Back to the First Match </button> </a>'
 
   }
 }
