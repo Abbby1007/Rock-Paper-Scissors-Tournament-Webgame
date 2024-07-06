@@ -14,7 +14,7 @@
    Selecting the HTMl elements where the player's and computer's score will be displayed*/
   let PlayerRoundWon = 0;
   let ComputerRoundWon = 0;
-  let roundDraws = 0;
+
   let finalMessage = '';
 
 
@@ -29,7 +29,7 @@
   const computerChoiceDisplay = document.getElementById('computer-choice');
   const playerRoundsWonDisplay = document.getElementById('player-rounds-won');
   const computerRoundsWonDisplay = document.getElementById('computer-rounds-won');
-  const roundsDrawDisplay = document.getElementById(`round-draw`);
+
   const finalMessageDisplay = document.getElementById('final-message');
 
   // determines what counts as a point to the player
@@ -43,12 +43,8 @@
       const choices = ['ROCK', 'PAPER', 'SCISSORS'];
       const computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
-      if (playerChoice === computerChoice) {
-        computerChoiceDisplay.textContent = `Computer's Choice:${computerChoice}`;
-        playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
-      }
 
-      else if (
+      if (
         (playerChoice === 'ROCK' && computerChoice === 'SCISSORS') ||
         (playerChoice === 'PAPER' && computerChoice === 'ROCK') ||
         (playerChoice === 'SCISSORS' && computerChoice === 'PAPER')
@@ -58,25 +54,20 @@
         playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
         playerRoundsWonDisplay.textContent = `Rounds Won: ${PlayerRoundWon}`;
         computerRoundsWonDisplay.textContent = `Opponents Rounds Won: ${ComputerRoundWon}`;
-        roundsDrawDisplay.textContent = `Round Ties: ${roundDraws}`;
 
-      } else if (playerChoice === computerChoice) {
-        roundDraws++;
-        computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
-        playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
-        playerRoundsWonDisplay.textContent = `Rounds Won: ${PlayerRoundWon}`;
-        computerRoundsWonDisplay.textContent = `Rounds Opponent Won: ${ComputerRoundWon}`;
-        roundsDrawDisplay.textContent = `Round Ties: ${roundDraws}`;
 
-      }
-      else {
+      } 
+      else if((computerChoice === 'ROCK' && playerChoice === 'SCISSORS') ||
+               (computerChoice === 'PAPER' && playerChoice === 'ROCK') ||
+               (computerChoice === 'SCISSORS' && playerChoice === 'PAPER')
+             ) {
         ComputerRoundWon++;
         computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
         playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
         playerRoundsWonDisplay.textContent = `Rounds Won: ${PlayerRoundWon}`;
         computerRoundsWonDisplay.textContent = `Rounds Opponent Won: ${ComputerRoundWon}`;
-        roundsDrawDisplay.textContent = `Round Ties: ${roundDraws}`;
-      }
+
+      } 
 
       if ((currentRound > totalRound) && (PlayerRoundWon > ComputerRoundWon)) {
         finalMessage = `Congratulations, you won  ${PlayerRoundWon} out of ${totalRound} so you can move one`;

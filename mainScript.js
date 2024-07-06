@@ -44,8 +44,12 @@ function playRound(playerChoice) {
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
     if (playerChoice === computerChoice) {
-      computerChoiceDisplay.textContent = `Computer's Choice:${computerChoice}`;
+      roundDraws++;
+      computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
       playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
+      playerRoundsWonDisplay.textContent = `Rounds Won: ${PlayerRoundWon}`;
+      computerRoundsWonDisplay.textContent = `Rounds Opponent Won: ${ComputerRoundWon}`;
+      roundsDrawDisplay.textContent = `Round Ties: ${roundDraws}`;
     }
 
     else if (
@@ -60,19 +64,7 @@ function playRound(playerChoice) {
       computerRoundsWonDisplay.textContent = `Opponents Rounds Won: ${ComputerRoundWon}`;
       roundsDrawDisplay.textContent = `Round Ties: ${roundDraws}`;
 
-    } else if ((playerChoice === 'ROCK' && computerChoice === 'ROCK') ||
-      (playerChoice === 'PAPER' && computerChoice === 'PAPER') ||
-      (playerChoice === 'SCISSORS' && computerChoice === 'SCISSORS')
-    ) {
-      roundDraws++;
-      console.log(`tiessssssss: roundDraws`);
-      computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
-      playerChoiceDisplay.textContent = `Player's choice: ${playerChoice}`;
-      playerRoundsWonDisplay.textContent = `Rounds Won: ${PlayerRoundWon}`;
-      computerRoundsWonDisplay.textContent = `Rounds Opponent Won: ${ComputerRoundWon}`;
-      roundsDrawDisplay.textContent = `Round Ties: ${roundDraws}`;
-
-    }
+    } 
     else {
       ComputerRoundWon++;
       computerChoiceDisplay.textContent = `Computer's Choice: ${computerChoice}`;
